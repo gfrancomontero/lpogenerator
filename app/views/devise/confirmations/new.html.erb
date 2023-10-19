@@ -1,0 +1,23 @@
+<h2>Resend confirmation instructions</h2>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend confirmation instructions" %>
+  </div>
+<% end %>
+
+<%#= render "devise/shared/links" %>
+<div class="user-links">
+      <% if params[:controller] == "devise/sessions" %>
+        <%= link_to "Not a User yet? Create your Free Account Here", new_user_registration_path, class: 'user-link' %>
+      <% else %>
+        <%= link_to "Already a User? Sign in Here", new_user_session_path, class: 'user-link' %>
+      <% end %>
+    </div>

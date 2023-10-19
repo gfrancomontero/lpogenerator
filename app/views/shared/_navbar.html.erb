@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <% if current_user %>
+    <div class="user-info">
+      <p>You're logged in as <%= current_user.email %></p>
+      <div class="links-container">
+        <%= link_to "See your purchased documents", purchased_documents_path, class: 'user-link' unless params[:action] == 'purchased_documents'%>
+        <%= link_to "Go back home", root_path, class: 'user-link' if params[:action] == 'purchased_documents'%>
+        <%= link_to 'Sign  Out', destroy_user_session_path, method: :delete, class: 'logout-link' %>
+      </div>
+    </div>
+  <% elsif params[:action] == "home" %>
+    <div class="user-links">
+        <%= link_to "Have an account? Sign in!", new_user_session_path, class: 'user-link' %>
+    </div>
+  <% end %>
+</nav>
+<% if 1 == 2 && Rails.env.development? %>
+  <small>6326108UF2462N0010UD</small>
+<% end %>

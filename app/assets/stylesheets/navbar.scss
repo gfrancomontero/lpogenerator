@@ -1,0 +1,85 @@
+/* Navbar Styles */
+.navbar {
+  color: #333;
+  background-color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-end; /* Align content to the right */
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  .user-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      margin: 0;
+      color: #333;
+    }
+    .links-container {
+      display: flex;
+      margin-top: 5px;
+      .user-link {
+        text-decoration: none;
+        background-color: #007bff; /* Blue button */
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+        }
+      }
+
+      .logout-link {
+        text-decoration: none;
+        background-color: #ff3b30; /* Red button */
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #d92c23; /* Darker red on hover */
+        }
+        &:visited {
+          text-decoration: none;
+          background-color: #ff3b30; /* Red button */
+          color: #fff;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .user-links {
+    text-align: right;
+
+    .user-link {
+      text-decoration: none;
+      background-color: #007bff; /* Blue button */
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    }
+  }
+}

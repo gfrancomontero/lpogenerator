@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LPO Generator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body onload='number_pages'>
+    <% if alert %>
+      <p class="rails-alert 2"><%= alert %> Please try again.</p>
+    <% end %>
+    <%= render 'shared/navbar' if current_user ||  params[:action] == "home" %>
+    <%= yield %>
+  </body>
+</html>

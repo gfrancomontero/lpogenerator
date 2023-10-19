@@ -1,0 +1,13 @@
+<div class="container">
+  <header class="centered">
+    <h1 class="document-title">Download your LPO in seconds</h1>
+    <h3>Please insert the Cadastral reference number of your property in the textfield below.</h3>
+  </header>
+
+  <%= form_for :document, url: documents_path, method: :get do |f| %>
+    <div class="form-field centered">
+      <%= f.text_field :cadastral_reference, placeholder: 'Enter Cadastral Reference Number', class: 'text-input' %>
+      <%= f.submit 'Submit', class: 'submit-button' %>
+    </div>
+  <% end %>
+</div>

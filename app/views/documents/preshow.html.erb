@@ -1,0 +1,30 @@
+<% if @document.address == 'N/A' %>
+  <div class="content-container">
+    <div class="content">
+      <h1>This LPO does not exist.</h1>
+      <h3>We can't find a property with Cadastral ID: <%= @document.cadastral_reference %></h3>
+      <h3>Please Retry.</h3>
+      <div class="link-back">
+        <%= link_to "Click here to search for another LPO", root_path %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="content-container">
+    <div class="content">
+      <h1>Your LPO exists, and it is ready to download.</h1>
+      <h3>Cadastral ID: <%= @document.cadastral_reference %></h3>
+      <h3>Address: <%= @document.address %></h3>
+
+      <% if current_user %>
+        <%= link_to "Go to Download Page", document_path(@document), class: "action-button" %>
+      <% else %>
+        <%= link_to "Sign up to purchase LPO", new_user_registration_path(document_id: params[:id]), class: "action-button" %>
+      <% end %>
+
+      <div class="link-back">
+        <%= link_to "Back home", root_path %>
+      </div>
+    </div>
+  </div>
+<% end %>

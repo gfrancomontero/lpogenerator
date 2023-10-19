@@ -1,0 +1,15 @@
+<div class="content-container">
+  <div class="content">
+    <h1>Your document is ready.</h1>
+    <p>Cadastral ID: <%= @document.cadastral_reference %></p>
+    <p>Address: <%= @document.address %></p>
+
+    <%= form_with url: purchase_document_path(@document.id), method: :post do |form| %>
+      <%= form.submit "Purchase it here for 49€", class: "submit-button" %>
+    <% end %>
+
+    <div class="link-back">
+      <%= link_to "Back home", root_path %>
+    </div>
+  </div>
+</div>

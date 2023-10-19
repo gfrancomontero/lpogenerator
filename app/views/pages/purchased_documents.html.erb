@@ -1,0 +1,46 @@
+<div class="document-container">
+  <header>
+    <h1 class="document-title">Purchased LPOs</h1>
+    <% if @documents.any? %>
+      <h3>We only save a the last 5 LPOs you purchase.</h3>
+      <h3>Download them if you don't want to have to buy them again.</h3>
+    <% else %>
+      <h3>At the moment you do not have any LPOs.</h3>
+      <%= link_to "Press Here to find your Property's LPO",root_path %>
+    <% end %>
+  </header>
+
+  <main>
+    <% if @documents.any? %>
+      <table class="document-table">
+        <thead>
+          <tr>
+            <th>Property Address</th>
+            <th>Cadastral</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @documents.each do |document| %>
+
+              <tr class="document-row">
+                <td class="document-address">
+                  <%= document.address[0..30]... %>
+                </td>
+                <td class="document-cadastral">
+                  <%= document.cadastral_reference %>
+                </td>
+                <td class="document-action">
+                  <%= link_to "Download", document_path(document, format: :pdf), target: '_blank', class: 'download-button' %>
+                </td>
+              </tr>
+
+          <% end %>
+        </tbody>
+      </table>
+      <div class="back-link-container">
+        <%= link_to "Purchase another LPO", root_path, class: 'back-link' %>
+      </div>
+    <% end %>
+  </main>
+</div>
