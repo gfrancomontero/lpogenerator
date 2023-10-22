@@ -5,12 +5,15 @@ class PagesController < ApplicationController
 
   def purchased_documents
     if current_user
-
-      documents = []
-      current_user.purchased_documents.each do |document|
-        documents << Document.find(document)
+      if current_user.purchased_documents.any?
+        documents = []
+        current_user.purchased_documents.each do |document|
+          documents << Document.find(document)
+        end
+        @documents = documents
+      else
+        @documents = []
       end
-      @documents = documents
 
     else
       redirect_to root_path

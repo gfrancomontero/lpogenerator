@@ -10,6 +10,7 @@ gem 'devise'
 gem 'faker', '~> 3.2'
 gem 'nokogiri'
 gem 'rest-client'
+gem 'stripe'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 

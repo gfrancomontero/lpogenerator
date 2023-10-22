@@ -1,11 +1,21 @@
 <div class="content-container">
   <div class="content">
-    <h1>Your document is ready.</h1>
-    <p>Cadastral ID: <%= @document.cadastral_reference %></p>
-    <p>Address: <%= @document.address %></p>
+
+    <% if params[:payment] == 'retry' %>
+      <h1>🔁</h1>
+      <h4 class="alert">There was something wrong with your payment.</h4>
+      <h4 class="alert">You must retry.</h4>
+    <% else %>
+      <h1>✅</h1>
+      <h4>Your document is ready.</h4>
+    <% end %>
+
+    <p>Cadastral Ref: <%= @document.cadastral_reference %></p>
+    <h5>Licencia Primera Ocupacion</h5>
+    <h4><%= @document.address %></h4>
 
     <%= form_with url: purchase_document_path(@document.id), method: :post do |form| %>
-      <%= form.submit "Purchase it here for 49€", class: "submit-button" %>
+      <%= form.submit "Purchase it here for 49€", class: "action-button" %>
     <% end %>
 
     <div class="link-back">

@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
   def show
     authenticate_user(params[:id])
 
-    if (document = Document.find_by(id: params[:id]))
+    if current_user.purchased_documents.include?(params[:id].to_i) && (document = Document.find_by(id: params[:id]))
       @document = document
 
       respond_to do |format|
@@ -41,19 +41,17 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def purchase
-    # remove first purchased document if the user has 5 or more.
-    if current_user.purchased_documents.count >= 5
-      current_user.update(purchased_documents: current_user.purchased_documents.drop(1))
-    end
-
+  def purchase_intent
     document_id = params[:document_id].to_i
-    user_docs = current_user.purchased_documents
+    amount_in_cents = 4900 # Adjust this based on your requirements
+    purchase_token = SecureRandom.hex(16)
 
-    user_docs << document_id unless user_docs.include?(document_id)
-    current_user.save
+    current_user.update(purchase_token: purchase_token)
 
-    redirect_to purchased_documents_path
+    stripe_service = StripeService.new(current_user)
+    intent = stripe_service.create_payment_intent(amount_in_cents, document_id, request.base_url)
+
+    redirect_to intent.url, allow_other_host: true
   end
 
   private

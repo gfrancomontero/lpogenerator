@@ -12,9 +12,10 @@
 <% else %>
   <div class="content-container">
     <div class="content">
-      <h1>Your LPO exists, and it is ready to download.</h1>
+      <h1 style="">✅</h1>
+      <h4>Your LPO exists, and it is ready to download.</h4>
       <h3>Cadastral ID: <%= @document.cadastral_reference %></h3>
-      <h3>Address: <%= @document.address %></h3>
+      <h2><%= @document.address %></h2>
 
       <% if current_user %>
         <%= link_to "Go to Download Page", document_path(@document), class: "action-button" %>
