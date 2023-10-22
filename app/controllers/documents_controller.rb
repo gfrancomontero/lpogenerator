@@ -42,7 +42,6 @@ class DocumentsController < ApplicationController
   end
 
   def purchase_intent
-
     document_id = params[:document_id].to_i
     amount_in_cents = 4900 # Adjust this based on your requirements
     purchase_token = SecureRandom.hex(16)
