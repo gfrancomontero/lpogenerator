@@ -1,40 +1,4 @@
-<%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+<%= wicked_pdf_stylesheet_link_tag "pdfs/commons" -%>
+<%= wicked_pdf_stylesheet_link_tag "pdfs/template_#{@document.template_id}" -%>
 <%= wicked_pdf_stylesheet_link_tag "commons" -%>
-<%#= @document.cadastral_reference %>
-<%#= @document.address %>
-<div class="full-frame">
-  <table class="pdf-table">
-    <tr>
-      <td class="top-left">
-        <div class="logo">
-          <img src="https://www.todoslosayuntamientos.es/images/e/andalucia/malaga/marbella.png" alt="Logo" class="bw-logo">
-          <br>
-          <strong>M.I. AYUNTAMIENTO DE MARBELLA</strong>
-        </div>
-        <div class="text">
-          DEPENDENCIA:..................................
-          <br>
-          <br>
-          NEGOCIADO:.......................................
-        </div>
-      </td>
-      <td class="top-right">
-        <div class="box">
-          <span class="monospace index">MARBELLA:</span><span class="monospace value">13 de Agosto de <%= @document.year[0] %>.<%= @document.year[1..3] %></span>
-          <br><br><br>
-          <span class="monospace index">REFERENCIA:</span><span class="monospace value">JGA/mal   Exp.XXX/<%= @document.year[2..3] %></span>
-          <br><br><br>
-          <span class="monospace index">ASUNTO:</span><span class="monospace value">Traslado acuerdo de C.G.</span>
-          <div class="hider top"></div>
-          <div class="hider right"></div>
-          <div class="hider bottom"></div>
-          <div class="hider left"></div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bottom-left"></td>
-      <td class="bottom-right"></td>
-    </tr>
-  </table>
-</div>
+<%= render "documents/pdf_templates/template_#{@document.template_id}" %>

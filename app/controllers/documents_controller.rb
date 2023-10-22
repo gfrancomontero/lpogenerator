@@ -25,13 +25,13 @@ class DocumentsController < ApplicationController
   def show
     authenticate_user(params[:id])
 
-    if current_user.purchased_documents.include?(params[:id].to_i) && (document = Document.find_by(id: params[:id]))
+    if (document = Document.find_by(id: params[:id]))
       @document = document
 
       respond_to do |format|
         format.html
         format.pdf do
-          if current_user
+          if current_user && current_user.purchased_documents.include?(params[:id].to_i)
             render pdf: 'show' # Excluding ".pdf" extension.
           end
         end
@@ -42,6 +42,7 @@ class DocumentsController < ApplicationController
   end
 
   def purchase_intent
+
     document_id = params[:document_id].to_i
     amount_in_cents = 4900 # Adjust this based on your requirements
     purchase_token = SecureRandom.hex(16)
